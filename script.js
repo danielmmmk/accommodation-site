@@ -1,78 +1,88 @@
-async function loadData(){
+async function loadData() {
 
-const response=await fetch(CSV_URL);
+    const response = await fetch(CSV_URL);
+    const csv = await response.text();
 
-const csv=await response.text();
+    const rows = csv.trim().split("\n");
 
-const rows=csv.trim().split("\n");
+    const headers = rows.shift().split(",");
 
-const headers=rows.shift().split(",");
+    const data = rows.map(row => {
 
-const data=rows.map(r=>{
+        const values = row.split(",");
 
-const values=r.split(",");
+        let obj = {};
 
-let obj={};
+        headers.forEach((header, index) => {
 
-headers.forEach((h,i)=>obj[h]=values[i]);
+            obj[header.trim()] = values[index]?.trim() || "";
 
-return obj;
+        });
 
-});
+        return obj;
 
-render(data);
+    });
 
-document
-.getElementById("search")
-.addEventListener("input",e=>{
+    render(data);
 
-const text=e.target.value.toLowerCase();
+    document
+        .getElementById("search")
+        .addEventListener("input", function(e){
 
-const filtered=data.filter(item=>
+            const search=e.target.value.toLowerCase();
 
-Object.values(item)
+            const filtered=data.filter(item=>
 
-.join(" ")
+                Object.values(item)
+                .join(" ")
+                .toLowerCase()
+                .includes(search)
 
-.toLowerCase()
+            );
 
-.includes(text)
+            render(filtered);
 
-);
-
-render(filtered);
-
-});
+        });
 
 }
 
 function render(data){
 
-const cards=document.getElementById("cards");
+    const container=document.getElementById("cards");
 
-cards.innerHTML="";
+    container.innerHTML="";
 
-data.forEach(item=>{
+    data.forEach(item=>{
 
-cards.innerHTML+=`
+        container.innerHTML +=`
 
 <div class="card">
 
-<img src="${item.Image}">
+<img src="${item.Image}" loading="lazy">
 
 <div class="content">
 
 <h2>${item.Name}</h2>
 
-<p><strong>Area:</strong> ${item.Area}</p>
+<div class="info">
 
-<p><strong>Price:</strong> ${item.Price}</p>
+📍 ${item.Area}<br>
 
-<p><strong>Rating:</strong> ⭐ ${item.Rating}</p>
+💲 ${item.Price}<br>
 
-<p><strong>Sleeps:</strong> ${item.Sleeps}</p>
+⭐ ${item.Rating}<br>
 
-<p>${item.Notes}</p>
+🛏 Sleeps ${item.Sleeps}<br>
+
+🏠 ${item.Bedrooms} Bedrooms
+
+<p>
+
+${item.Notes}
+
+</p>
+
+</div>
 
 <a
 class="button"
@@ -89,7 +99,7 @@ View Listing
 
 `;
 
-});
+    });
 
 }
 
