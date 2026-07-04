@@ -1,8 +1,7 @@
-<script type="module">
-   import { initializeApp } from 'https://www.gstatic.com/firebasejs/12.1.0/firebase-app.js';
-   import { getAuth } from 'https://www.gstatic.com/firebasejs/12.1.0/firebase-auth.js';
-   import { getFirestore } from 'https://www.gstatic.com/firebasejs/12.1.0/firebase-firestore.js';
-</script>
+import { initializeApp } from 'https://www.gstatic.com/firebasejs/12.1.0/firebase-app.js';
+import { getAuth } from 'https://www.gstatic.com/firebasejs/12.1.0/firebase-auth.js';
+import { getFirestore } from 'https://www.gstatic.com/firebasejs/12.1.0/firebase-firestore.js';
+
 
 // TODO: Add SDKs for Firebase products that you want to use
 // https://firebase.google.com/docs/web/setup#available-libraries
