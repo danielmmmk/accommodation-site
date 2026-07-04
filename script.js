@@ -1,11 +1,4 @@
 async function loadData() {
-    signInAnonymously(auth)
-      .then(() => {
-        console.log("Signed in anonymously");
-      })
-      .catch(error => {
-        console.error(error);
-      });
   
     const response = await fetch(CSV_URL);
     const csv = await response.text();
