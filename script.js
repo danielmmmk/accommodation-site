@@ -1,3 +1,13 @@
+import { db, auth } from "./firebase-config.js";
+import { doc, getDoc, setDoc } from "firebase/firestore";
+import { onAuthStateChanged } from "firebase/auth";
+
+let userId = null;
+
+onAuthStateChanged(auth, (user) => {
+    if (user) userId = user.uid;
+});
+
 async function loadData() {
 
     const response = await fetch(CSV_URL);
