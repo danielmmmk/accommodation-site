@@ -1,12 +1,6 @@
-import { db, auth } from "./firebase-config.js";
-import { doc, getDoc, setDoc } from "firebase/firestore";
-import { onAuthStateChanged } from "firebase/auth";
-
-let userId = null;
-
-onAuthStateChanged(auth, (user) => {
-    if (user) userId = user.uid;
-});
+import { initializeApp } from "firebase/app";
+import { getFirestore } from "firebase/firestore";
+import { getAuth, signInAnonymously, onAuthStateChanged } from "firebase/auth";
 
 async function loadData() {
 
