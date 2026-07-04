@@ -13,4 +13,14 @@ const firebaseConfig = {
   measurementId: "G-Z440E6RWJQ"
 };
 
+// Initialize Firebase
 const app = initializeApp(firebaseConfig);
+
+// Services
+export const db = getFirestore(app);
+export const auth = getAuth(app);
+
+// Silent login (no UI)
+signInAnonymously(auth).catch((error) => {
+  console.error("Anonymous auth failed:", error);
+});
