@@ -12,8 +12,13 @@ const firebaseConfig = {
   measurementId: "G-Z440E6RWJQ"
 };
 
-const app = initializeApp(firebaseConfig);
-const auth = getAuth(app);
+export const app = initializeApp(firebaseConfig);
+export const auth = getAuth(app);
+export const db = getFirestore(app);
+
+await signInAnonymously(auth);
+
+console.log("Signed in anonymously");
 
 signInAnonymously(auth)
   .then(() => {
