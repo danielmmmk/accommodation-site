@@ -2,25 +2,17 @@ async function loadData() {
 
     const response = await fetch(CSV_URL);
     const csv = await response.text();
-
     const rows = csv.trim().split("\n");
-
     const headers = rows.shift().split(",");
-
     const data = rows.map(row => {
 
         const values = row.split(",");
-
         let obj = {};
-
         headers.forEach((header, index) => {
-
             obj[header.trim()] = values[index]?.trim() || "";
-
         });
 
         return obj;
-
     });
 
     render(data);
@@ -30,20 +22,14 @@ async function loadData() {
         .addEventListener("input", function(e){
 
             const search=e.target.value.toLowerCase();
-
             const filtered=data.filter(item=>
-
                 Object.values(item)
                 .join(" ")
                 .toLowerCase()
                 .includes(search)
-
             );
-
             render(filtered);
-
         });
-
 }
 
 window.vote = async function(propertyID, vote) {
@@ -72,55 +58,36 @@ function render(data){
 <h2>${item.Name}</h2>
 
 <div class="info">
+
 ID: ${item.ID}<br>
-
 📍 ${item.Area}<br>
-
 💲 ${item.Price}<br>
-
 ⭐ ${item.Rating}<br>
-
 🛏 Sleeps ${item.Sleeps}<br>
-
 🏠 ${item.Bedrooms} Bedrooms
 
 <p>
-
 ${item.Notes}
-
 </p>
 
 </div>
 
-
 <div class="vote-section">
-
     <div class="vote-counts">
-
         👍 <span id="yes-${item.ID}">0</span>
-
         &nbsp;&nbsp;
-
         👎 <span id="no-${item.ID}">0</span>
-
     </div>
 
     <div class="vote-buttons">
-
         <button
             onclick="vote('${item.ID}','yes')">
-
             👍 Yes
-
         </button>
-
         <button
             onclick="vote('${item.ID}','no')">
-
             👎 No
-
         </button>
-
     </div>
 
 </div>
@@ -133,15 +100,11 @@ target="_blank">
 View Listing
 
 </a>
-
 </div>
-
 </div>
 
 `;
-
     });
-
 }
 
 loadData();
