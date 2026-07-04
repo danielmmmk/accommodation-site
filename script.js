@@ -1,13 +1,12 @@
-auth.signInAnonymously()
-  .then(() => {
-    console.log("Signed in anonymously");
-  })
-  .catch(error => {
-    console.error(error);
-  });
-
 async function loadData() {
-
+    auth.signInAnonymously()
+      .then(() => {
+        console.log("Signed in anonymously");
+      })
+      .catch(error => {
+        console.error(error);
+      });
+  
     const response = await fetch(CSV_URL);
     const csv = await response.text();
     const rows = csv.trim().split("\n");
