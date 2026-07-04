@@ -1,3 +1,7 @@
+import { auth, db } from "./firebase-config.js";
+
+console.log(auth.currentUser);
+
 async function loadData() {
   
     const response = await fetch(CSV_URL);
