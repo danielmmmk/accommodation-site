@@ -46,13 +46,10 @@ async function loadData() {
 
 }
 
-async function vote(propertyID, vote){
-
+window.vote = async function(propertyID, vote) {
     console.log(propertyID);
-
     console.log(vote);
-
-}
+};
 
 function render(data){
 
