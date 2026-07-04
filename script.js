@@ -67,6 +67,7 @@ function render(data){
 <h2>${item.Name}</h2>
 
 <div class="info">
+ID: ${item.ID}<br>
 
 📍 ${item.Area}<br>
 
@@ -83,6 +84,39 @@ function render(data){
 ${item.Notes}
 
 </p>
+
+</div>
+
+
+<div class="vote-section">
+
+    <div class="vote-counts">
+
+        👍 <span id="yes-${item.ID}">0</span>
+
+        &nbsp;&nbsp;
+
+        👎 <span id="no-${item.ID}">0</span>
+
+    </div>
+
+    <div class="vote-buttons">
+
+        <button
+            onclick="vote('${item.ID}','yes')">
+
+            👍 Yes
+
+        </button>
+
+        <button
+            onclick="vote('${item.ID}','no')">
+
+            👎 No
+
+        </button>
+
+    </div>
 
 </div>
 
