@@ -1,5 +1,14 @@
 const user = firebase.auth().currentUser;
 console.log(user);
+onAuthStateChanged(auth, (user) => {
+
+    if (!user) return;
+
+    const userId = user.uid;
+
+    console.log("Voting as:", userId);
+
+});
 
 async function loadData() {
 
