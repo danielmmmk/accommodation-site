@@ -167,3 +167,17 @@ grid-template-columns:1fr;
     background:#1565c0;
 
 }
+
+.image-wrapper {
+    width: 100%;
+    aspect-ratio: 4 / 3;
+    overflow: hidden;
+    background: #eee;
+}
+
+.image-wrapper img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    display: block;
+}
