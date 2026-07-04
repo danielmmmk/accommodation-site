@@ -178,6 +178,14 @@ grid-template-columns:1fr;
 .image-wrapper img {
     width: 100%;
     height: 100%;
+    border-top-left-radius: 14px;
+    border-top-right-radius: 14px;    
     object-fit: cover;
     display: block;
+}
+
+.card {
+    display: flex;
+    flex-direction: column;
+    height: 100%;
 }
