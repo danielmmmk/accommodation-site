@@ -1,5 +1,5 @@
 async function loadData() {
-    auth.signInAnonymously()
+    signInAnonymously(auth)
       .then(() => {
         console.log("Signed in anonymously");
       })
