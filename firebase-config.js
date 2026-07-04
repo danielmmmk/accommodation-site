@@ -1,8 +1,4 @@
 
-import { initializeApp } from 'https://www.gstatic.com/firebasejs/12.1.0/firebase-app.js';
-import { getAuth } from 'https://www.gstatic.com/firebasejs/12.1.0/firebase-auth.js';
-import { getFirestore } from 'https://www.gstatic.com/firebasejs/12.1.0/firebase-firestore.js';
-
 const firebaseConfig = {
   apiKey: "AIzaSyDSlyCOnqlXUseDOx-0fw-BwGARx9-3kYY",
   authDomain: "korea-trip-c16ba.firebaseapp.com",
@@ -14,13 +10,10 @@ const firebaseConfig = {
 };
 
 // Initialize Firebase
-const app = initializeApp(firebaseConfig);
+firebase.initializeApp(firebaseConfig);
 
 // Services
-export const db = getFirestore(app);
-export const auth = getAuth(app);
+const db = firebase.firestore();
+const auth = firebase.auth();
 
-// Silent login (no UI)
-signInAnonymously(auth).catch((error) => {
-  console.error("Anonymous auth failed:", error);
-});
+auth.signInAnonymously();
