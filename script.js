@@ -1,6 +1,5 @@
-import { initializeApp } from "firebase/app";
-import { getFirestore } from "firebase/firestore";
-import { getAuth, signInAnonymously, onAuthStateChanged } from "firebase/auth";
+const user = firebase.auth().currentUser;
+console.log(user);
 
 async function loadData() {
 
