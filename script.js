@@ -58,7 +58,9 @@ function render(data){
 
 <div class="card">
 
-<img src="${item.Image}" loading="lazy">
+<div class="image-wrapper">
+    <img src="${item.Image}" loading="lazy">
+</div>
 
 <div class="content">
 
