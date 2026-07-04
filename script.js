@@ -1,4 +1,4 @@
-signInAnonymously(auth)
+auth.signInAnonymously()
     .then((result) => {
         console.log("Signed in user:", result.user.uid);
     })
