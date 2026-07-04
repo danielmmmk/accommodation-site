@@ -3,8 +3,6 @@ import { initializeApp } from 'https://www.gstatic.com/firebasejs/12.1.0/firebas
 import { getAuth } from 'https://www.gstatic.com/firebasejs/12.1.0/firebase-auth.js';
 import { getFirestore } from 'https://www.gstatic.com/firebasejs/12.1.0/firebase-firestore.js';
 
-// Your web app's Firebase configuration
-// For Firebase JS SDK v7.20.0 and later, measurementId is optional
 const firebaseConfig = {
   apiKey: "AIzaSyDSlyCOnqlXUseDOx-0fw-BwGARx9-3kYY",
   authDomain: "korea-trip-c16ba.firebaseapp.com",
