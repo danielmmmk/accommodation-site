@@ -1,4 +1,10 @@
-
+signInAnonymously(auth)
+    .then((result) => {
+        console.log("Signed in user:", result.user.uid);
+    })
+    .catch((error) => {
+        console.error(error);
+    });
 
 async function loadData() {
 
