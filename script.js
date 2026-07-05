@@ -1,4 +1,4 @@
-import { doc, setDoc, serverTimestamp } from 'https://www.gstatic.com/firebasejs/12.15.0/firebase-firestore.js'
+import { doc, setDoc, serverTimestamp } from "https://www.gstatic.com/firebasejs/12.15.0/firebase-firestore.js";
 import { auth, db } from "./firebase-config.js";
 
 window.vote = async function(accommodationId, voteValue) {
