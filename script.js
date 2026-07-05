@@ -19,6 +19,7 @@ window.vote = async function(accommodationId, voteValue) {
     );
 
     console.log("Vote saved");
+    console.log("Making a change to force deployment");
 };
 
 async function loadData() {
