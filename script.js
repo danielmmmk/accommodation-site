@@ -1,6 +1,24 @@
-import { auth, db } from "./firebase-config.js";
+import { auth, db, doc, setDoc, serverTimestamp } from "./firebase-config.js";
 
-console.log(auth.currentUser);
+window.vote = async function(accommodationId, voteValue) {
+
+    const user = auth.currentUser;
+
+    if (!user) {
+        console.error("User not signed in");
+        return;
+    }
+
+    await setDoc(
+        doc(db, "accommodations", accommodationId, "votes", user.uid),
+        {
+            vote: voteValue,
+            updatedAt: serverTimestamp()
+        }
+    );
+
+    console.log("Vote saved");
+};
 
 async function loadData() {
   
@@ -35,11 +53,6 @@ async function loadData() {
             render(filtered);
         });
 }
-
-window.vote = async function(propertyID, vote) {
-    console.log(propertyID);
-    console.log(vote);
-};
 
 function render(data){
 
