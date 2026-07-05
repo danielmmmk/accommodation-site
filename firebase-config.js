@@ -18,8 +18,6 @@ export const db = getFirestore(app);
 
 await signInAnonymously(auth);
 
-console.log("Signed in anonymously");
-
 signInAnonymously(auth)
   .then(() => {
     console.log("Signed in anonymously");
