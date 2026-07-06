@@ -144,6 +144,11 @@ ${item.Notes}
             onclick="vote('${item.ID}','no')">
             👎 No
         </button>
+        <button
+            onclick="vote('${item.ID}','clear')">
+            ☐ Clear
+        </button>
+        
     </div>
 
 </div>
