@@ -99,7 +99,7 @@ function render(data){
 
     data.forEach(item=>{
 
-        listenForVotes({$item.ID});
+        listenForVotes(item.ID);
         container.innerHTML +=`
 
 <div class="card">
