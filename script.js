@@ -1,4 +1,4 @@
-import { doc, setDoc, serverTimestamp, collection, onSnapshot, query } from 'https://www.gstatic.com/firebasejs/12.15.0/firebase-firestore.js'
+import { doc, setDoc, serverTimestamp, collection, getDocs, onSnapshot, query } from 'https://www.gstatic.com/firebasejs/12.15.0/firebase-firestore.js'
 import { auth, db } from './firebase-config.js'
 
 window.vote = async function(accommodationId, voteValue) {
@@ -20,6 +20,42 @@ window.vote = async function(accommodationId, voteValue) {
 
     console.log("Vote saved");
 };
+
+// Update the vote totals shown on the page
+function updateVoteDisplay(accommodationId, yesCount, noCount) {
+    const yesElement = document.getElementById(`yes-count-${accommodationId}`);
+    const noElement = document.getElementById(`no-count-${accommodationId}`);
+
+    if (yesElement) {
+        yesElement.textContent = yesCount;
+    }
+
+    if (noElement) {
+        noElement.textContent = noCount;
+    }
+}
+
+// Listen for live vote updates for one accommodation
+function listenForVotes(accommodationId) {
+    const votesRef = collection(db, "accommodations", accommodationId, "votes");
+
+    onSnapshot(votesRef, (snapshot) => {
+        let yesCount = 0;
+        let noCount = 0;
+
+        snapshot.forEach((voteDoc) => {
+            const vote = voteDoc.data().vote;
+
+            if (vote === "yes") {
+                yesCount++;
+            } else if (vote === "no") {
+                noCount++;
+            }
+        });
+
+        updateVoteDisplay(accommodationId, yesCount, noCount);
+    });
+}
 
 async function loadData() {
   
@@ -63,6 +99,7 @@ function render(data){
 
     data.forEach(item=>{
 
+        listenForVotes({$item.ID});
         container.innerHTML +=`
 
 <div class="card">
@@ -92,9 +129,9 @@ ${item.Notes}
 
 <div class="vote-section">
     <div class="vote-counts">
-        👍 <span id="yes-${item.ID}">0</span>
+        👍 <span id="yes-count-${item.ID}">0</span>
         &nbsp;&nbsp;
-        👎 <span id="no-${item.ID}">0</span>
+        👎 <span id="no-count-${item.ID}">0</span>
     </div>
 
     <div class="vote-buttons">
