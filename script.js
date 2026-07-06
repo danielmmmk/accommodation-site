@@ -21,44 +21,6 @@ window.vote = async function(accommodationId, voteValue) {
     console.log("Vote saved");
 };
 
-document.querySelectorAll(".accommodation").forEach(card => {
-
-    const accommodationId = card.dataset.id;
-
-    const yesEl = card.querySelector(".yes-count");
-    const noEl = card.querySelector(".no-count");
-
-    // LIVE UPDATES
-    listenToVotes(accommodationId, ({ yesCount, noCount }) => {
-        yesEl.textContent = yesCount;
-        noEl.textContent = noCount;
-    });
-
-});
-
-function listenToVotes(accommodationId, callback) {
-
-    const votesRef = collection(db, "accommodations", accommodationId, "votes");
-
-    onSnapshot(votesRef, (snapshot) => {
-
-        let yesCount = 0;
-        let noCount = 0;
-
-        snapshot.forEach((doc) => {
-            const data = doc.data();
-
-            if (data.vote === true) {
-                yesCount++;
-            } else if (data.vote === false) {
-                noCount++;
-            }
-        });
-
-        callback({ yesCount, noCount });
-    });
-}
-
 async function loadData() {
   
     const response = await fetch(CSV_URL);
