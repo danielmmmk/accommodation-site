@@ -71,8 +71,8 @@ async function loadData() {
                 obj[header.trim()] = values[index]?.trim() || "";
             });
             return obj;
-        });
-        .filter(item => item.Active?.trim().toLowerCase() === "yes")
+        })
+        .filter(item => item.Active?.trim().toLowerCase() === "yes");
     render(data);
 
     document
