@@ -113,7 +113,6 @@ function render(data){
 
 <div class="info">
 
-ID: ${item.ID}<br>
 📍 ${item.Area}<br>
 💲 ${item.Price}<br>
 ⭐ ${item.Rating}<br>
