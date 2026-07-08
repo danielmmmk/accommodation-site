@@ -63,17 +63,16 @@ async function loadData() {
     const csv = await response.text();
     const rows = csv.trim().split("\n");
     const headers = rows.shift().split(",");
-    const data = rows.map(row => {
-
-        const values = row.split(",");
-        let obj = {};
-        headers.forEach((header, index) => {
-            obj[header.trim()] = values[index]?.trim() || "";
+    const data = rows
+        .map(row => {
+            const values = row.split(",");
+            let obj = {};
+            headers.forEach((header, index) => {
+                obj[header.trim()] = values[index]?.trim() || "";
+            });
+            return obj;
         });
-
-        return obj;
-    });
-
+        .filter(item => item.Active?.trim().toLowerCase() === "yes")
     render(data);
 
     document
