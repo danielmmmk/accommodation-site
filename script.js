@@ -147,7 +147,7 @@ Notes: ${item.Notes}
         </button>
         <button
             onclick="vote('${item.ID}','clear')">
-            ☐ Clear
+            Clear
         </button>
         
     </div>
