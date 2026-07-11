@@ -67,10 +67,10 @@ async function loadData() {
         skipEmptyLines: true,  // Ignore blank rows
         transformHeader: header => header.trim()
     });
-    
-    const data = results.data.filter(item =>
-        item.Active?.trim().toLowerCase() === "yes"
-    );
+
+    const data = results.data
+        .filter(item => item.Active?.trim().toLowerCase() === "yes")
+        .sort((a, b) => Number(a.Price) - Number(b.Price));
     
     render(data);
 
