@@ -62,6 +62,18 @@ main{
 
 }
 
+/* Small Monitor */
+
+@media(max-width:1600px){
+
+#cards{
+
+grid-template-columns:repeat(3,1fr);
+
+}
+
+}
+
 /* Tablet */
 
 @media(max-width:1000px){
