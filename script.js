@@ -103,12 +103,18 @@ function render(data){
 <div class="card">
 
 <div class="image-wrapper">
-    <img src="${item.Image}" loading="lazy">
+    <a href="${item.Link}" target="_blank" rel="noopener noreferrer">
+        <img src="${item.Image}" alt="${item.Name}" loading="lazy">
+    </a>
 </div>
 
 <div class="content">
 
-<h2>${item.Name}</h2>
+<h2>
+    <a href="${item.Link}" target="_blank" rel="noopener noreferrer">
+        ${item.Name}
+    </a>
+</h2>
 
 <div class="info">
 
@@ -147,15 +153,6 @@ Notes: ${item.Notes}
     </div>
 
 </div>
-
-<a
-class="button"
-href="${item.Link}"
-target="_blank">
-
-View Listing
-
-</a>
 </div>
 </div>
 
