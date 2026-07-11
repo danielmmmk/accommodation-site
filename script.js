@@ -70,7 +70,7 @@ async function loadData() {
 
     const data = results.data
         .filter(item => item.Active?.trim().toLowerCase() === "yes")
-        .sort((a, b) => Number(a.Price) - Number(b.Price));
+        .sort((a, b) => Number(a.TotalPrice) - Number(b.TotalPrice));
     
     render(data);
 
