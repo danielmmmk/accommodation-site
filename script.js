@@ -61,18 +61,17 @@ async function loadData() {
   
     const response = await fetch(CSV_URL);
     const csv = await response.text();
-    const rows = csv.trim().split("\n");
-    const headers = rows.shift().split(",");
-    const data = rows
-        .map(row => {
-            const values = row.split(",");
-            let obj = {};
-            headers.forEach((header, index) => {
-                obj[header.trim()] = values[index]?.trim() || "";
-            });
-            return obj;
-        })
-        .filter(item => item.Active?.trim().toLowerCase() === "yes");
+    
+    const results = Papa.parse(csv, {
+        header: true,          // Use the first row as object property names
+        skipEmptyLines: true,  // Ignore blank rows
+        transformHeader: header => header.trim()
+    });
+    
+    const data = results.data.filter(item =>
+        item.Active?.trim().toLowerCase() === "yes"
+    );
+    
     render(data);
 
     document
@@ -113,11 +112,10 @@ function render(data){
 
 <div class="info">
 
+💲 ${item.TotalPrice}<br>
 📍 ${item.Area}<br>
-💲 ${item.Price}<br>
-⭐ ${item.Rating}<br>
-🛏 Sleeps ${item.Sleeps}<br>
-🏠 ${item.Bedrooms} Bedrooms
+⭐ ${item.NearestStation}<br>
+🏠 ${item.Layout}
 
 <p>
 ${item.Notes}
