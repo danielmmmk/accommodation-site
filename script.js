@@ -113,12 +113,12 @@ function render(data){
 <div class="info">
 
 💲 ${item.TotalPrice}<br>
-📍 ${item.Area}<br>
-⭐ ${item.NearestStation}<br>
-🏠 ${item.Layout}
+📍 Area: ${item.Area}<br>
+🚆 Nearest Station: ${item.NearestStation}<br>
+🏠 Layout: ${item.Layout}
 
 <p>
-${item.Notes}
+Notes: ${item.Notes}
 </p>
 
 </div>
